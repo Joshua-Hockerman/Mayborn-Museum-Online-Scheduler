@@ -8,4 +8,5 @@ app_name = "MaybornApp"
 urlpatterns = [
     # Home page
     path("", views.index, name="index"),
+    path("schedule/", views.schedule, name="schedule"),
 ]

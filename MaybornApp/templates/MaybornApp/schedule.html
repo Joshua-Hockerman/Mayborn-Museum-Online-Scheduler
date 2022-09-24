@@ -1,0 +1,12 @@
+{% extends "MaybornApp/base.html" %}
+
+{% block content %}
+<p>Submit your preferences.</p>
+
+<form action="{% url 'MaybornApp:schedule' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add topic</button>
+</form>
+
+{% endblock content %}
