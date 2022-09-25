@@ -1,5 +1,12 @@
 <p>
-    <a href="{% url 'MaybornApp:index' %}">Mayborn App</a>
+    <a href="{% url 'MaybornApp:index' %}">Mayborn App</a> -
+    <a href="{% url 'MaybornApp:schedule' %}">Schedule</a> -
+    {% if user.is_authenticated %}
+    Hello, {{ user.username }}.
+    {% else %}
+    <a href="{% url 'users:login' %}">Log in</a>
+    {% endif %}
 </p>
+
 
 {% block content %}{% endblock content %}

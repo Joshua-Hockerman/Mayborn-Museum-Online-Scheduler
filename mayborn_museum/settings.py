@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps
     "MaybornApp",
+    "users",
     # Default Django Apps
     "django.contrib.admin",
     "django.contrib.auth",
