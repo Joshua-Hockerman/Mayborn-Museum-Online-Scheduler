@@ -1,0 +1,13 @@
+% extends "MaybornApp/base.html" %
+
+% block content %
+
+<p>Edit schedule:</p>
+
+<form action="{% url 'MaybornApp:edit_schedule' schedule.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit changes">Save changes</button>
+</form>
+
+{% endblock content %}

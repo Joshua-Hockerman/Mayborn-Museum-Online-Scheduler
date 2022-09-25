@@ -32,3 +32,4 @@ class ScheduleForm(forms.ModelForm):
             "Holiday_10": "Christmas Day",
             "Comments": "Comments",
         }
+        widgets = {"Comments": forms.Textarea(attrs={"cols": 40})}

@@ -25,3 +25,22 @@ def schedule(request):
 
     context = {"form": form}
     return render(request, "MaybornApp/schedule.html", context)
+
+
+def edit_schedule(request, schedule_id):
+    """Allow the user to edit their entry in case of a change of mind"""
+    schedule = Schedule.objects.get(id=schedule_id)
+
+    if request.method != "POST":
+        # Call up the schedule from the database
+        form = ScheduleForm(instance=schedule)
+
+    else:
+        # POST data submitted; process data
+        form = ScheduleForm(instance=schedule, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("MaybornApp:index", schedule=schedule.id)
+
+    context = {"schedule": schedule, "form": form}
+    return render(request, "MaybornApp/edit_schedule.html", context)
