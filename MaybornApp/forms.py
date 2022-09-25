@@ -17,6 +17,7 @@ class ScheduleForm(forms.ModelForm):
             "Holiday_8",
             "Holiday_9",
             "Holiday_10",
+            "Comments",
         }
         labels = {
             "Holiday_1": "New Years Day",
@@ -29,4 +30,5 @@ class ScheduleForm(forms.ModelForm):
             "Holiday_8": "Veteran's Day",
             "Holiday_9": "Thanksgiving Day",
             "Holiday_10": "Christmas Day",
+            "Comments": "Comments",
         }
