@@ -1,9 +1,10 @@
 <p>
     <a href="{% url 'MaybornApp:index' %}">Mayborn App</a> -
-    <a href="{% url 'MaybornApp:schedule' %}">Schedule</a> -
-    <a href="{% url 'MaybornApp:admin_page' %}">Admin Page</a>
+
     {% if user.is_authenticated %}
     Hello, {{ user.username }}.
+    <a href="{% url 'MaybornApp:schedule' %}">Schedule</a> -
+    <a href="{% url 'MaybornApp:admin_page' %}">Admin Page</a>
     <a href="{% url 'users:logout' %}">Log Out</a>
     {% else %}
     <a href="{% url 'users:register' %}">Register</a> -
