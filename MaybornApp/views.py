@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from .models import Schedule
 from .forms import ScheduleForm
@@ -11,6 +12,7 @@ def index(request):
     return render(request, "MaybornApp/index.html")
 
 
+@login_required
 def schedule(request):
     """Allow the employee to enter the schedule"""
     if request.method != "POST":
@@ -27,6 +29,7 @@ def schedule(request):
     return render(request, "MaybornApp/schedule.html", context)
 
 
+@login_required
 def edit_schedule(request, schedule_id):
     """Allow the user to edit their entry in case of a change of mind"""
     schedule = Schedule.objects.get(id=schedule_id)
@@ -44,3 +47,13 @@ def edit_schedule(request, schedule_id):
 
     context = {"schedule": schedule, "form": form}
     return render(request, "MaybornApp/edit_schedule.html", context)
+
+
+@login_required
+def admin_page(request):
+    """
+    Compiles the information submitted by the employees in the database
+    and displays it in a data grid view.  Allows for the admin to compile
+    the employee schedules through the algorithm and send out the compiled
+    schedule to employees
+    """

@@ -1,31 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-
-
-class Topic(models.Model):
-    """A topic the user is learning about."""
-
-    text = models.CharField(max_length=200)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        """Return a string representation of the model."""
-        return self.text
-
-
-OPTION_CHOICES = (
-    (1, 1),
-    (2, 2),
-    (3, 3),
-    (4, 4),
-    (5, 5),
-    (6, 6),
-    (7, 7),
-    (8, 8),
-    (9, 9),
-    (10, 10),
-)
 
 
 class Schedule(models.Model):
@@ -43,3 +19,5 @@ class Schedule(models.Model):
     Holiday_10 = models.SmallIntegerField()
 
     Comments = models.CharField(max_length=500)
+
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
