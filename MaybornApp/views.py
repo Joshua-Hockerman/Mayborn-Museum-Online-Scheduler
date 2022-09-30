@@ -1,8 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 from .models import Schedule
 from .forms import ScheduleForm
+
+from django.core.exceptions import PermissionDenied
+
+
+def test_superuser(user):
+    if user.is_superuser:
+        return user.is_superuser
+    else:
+        raise PermissionDenied
+
 
 # Create your views here.
 
@@ -49,7 +60,7 @@ def edit_schedule(request, schedule_id):
     return render(request, "MaybornApp/edit_schedule.html", context)
 
 
-@login_required
+@user_passes_test(test_superuser)
 def admin_page(request):
     """
     Compiles the information submitted by the employees in the database
