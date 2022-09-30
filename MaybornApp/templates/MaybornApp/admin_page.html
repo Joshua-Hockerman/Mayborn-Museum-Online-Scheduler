@@ -1,0 +1,66 @@
+{% extends "MaybornApp/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<style>
+    table {
+
+        font-size: 15px;
+
+        width: auto;
+
+    }
+
+
+
+    th,
+
+    td {
+
+        border: 1px solid black;
+
+        padding: 6px;
+
+    }
+</style>
+
+
+<h2>
+    <p>Employee Schedules</p>
+</h2>
+
+<table>
+    <tr>
+        <th>Employee</th>
+        <th>New Year's Day</th>
+        <th>MLK Day</th>
+        <th>President's Day</th>
+        <th>Memorial Day</th>
+        <th>Juneteenth</th>
+        <th>Independence Day</th>
+        <th>Labor Day</th>
+        <th>Veteran's Day</th>
+        <th>Thanksgiving Day</th>
+        <th>Christmas Day</th>
+        <th>Comments</th>
+    </tr>
+    {% for schedule in schedules %}
+    <tr>
+        <td>{{schedule.owner}}</td>
+        <td>{{schedule.Holiday_1}}</td>
+        <td>{{schedule.Holiday_2}}</td>
+        <td>{{schedule.Holiday_3}}</td>
+        <td>{{schedule.Holiday_4}}</td>
+        <td>{{schedule.Holiday_5}}</td>
+        <td>{{schedule.Holiday_6}}</td>
+        <td>{{schedule.Holiday_7}}</td>
+        <td>{{schedule.Holiday_8}}</td>
+        <td>{{schedule.Holiday_9}}</td>
+        <td>{{schedule.Holiday_10}}</td>
+        <td>{{schedule.Comments}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

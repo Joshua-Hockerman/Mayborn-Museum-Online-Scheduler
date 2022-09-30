@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # My apps
     "MaybornApp",
     "users",
+    # Thrid party apps
+    "bootstrap4",
     # Default Django Apps
     "django.contrib.admin",
     "django.contrib.auth",

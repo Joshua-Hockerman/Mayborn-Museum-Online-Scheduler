@@ -57,3 +57,7 @@ def admin_page(request):
     the employee schedules through the algorithm and send out the compiled
     schedule to employees
     """
+    schedules = Schedule.objects.all()
+
+    context = {"schedules": schedules}
+    return render(request, "MaybornApp/admin_page.html", context)
